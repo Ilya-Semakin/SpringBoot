@@ -1,0 +1,6 @@
+
+mailgun:
+  url: https://api.mailgun.net/v3/sandbox89b9ecb7baf64f5c89bc17f625f8e46d.mailgun.org/messages
+  api: key-fca7de2da455fa12e8bb97cdc903d99b
+  from: USER@YOURDOMAIN.COM
+  subject: hello
