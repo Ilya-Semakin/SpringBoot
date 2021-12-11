@@ -1,28 +1,26 @@
 package com.example.demo;
 
+import com.example.demo.MailgunConfig.Mailgun;
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@RestController
-@Component
+@Service
 public class MailSender {
+    @Autowired
+    private Mailgun mailgun;
 
-    public static String url;
-    public static String api;
-    public static String from;
-    public static String subject;
-
-    public static JsonNode sendSimpleMessage(String text,
-                                             String mail) throws UnirestException {
-        HttpResponse<JsonNode> request = Unirest.post(url)
-                .basicAuth("api",api)
-                .field("from",from)
+    public JsonNode sendSimpleMessage(String text,
+                                      String mail) throws UnirestException {
+        HttpResponse<JsonNode> request;
+        request = Unirest.post(mailgun.getUrl())
+                .basicAuth("api", mailgun.getApi())
+                .field("from", mailgun.getFrom())
                 .field("to", mail)
-                .field("subject",subject)
+                .field("subject", mailgun.getSubject())
                 .field("text", text)
                 .asJson();
         return request.getBody();

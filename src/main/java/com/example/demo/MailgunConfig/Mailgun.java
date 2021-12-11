@@ -1,29 +1,20 @@
 package com.example.demo.MailgunConfig;
 
-import com.example.demo.MailSender;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
-@Configuration
 @ConfigurationProperties(prefix = "mailgun")
+@Getter
+@Setter
 public class Mailgun {
 
-    public void setUrl(String urlGet) {
-        MailSender.url = urlGet;
-    }
-
-    public void setApi(String apiGet) {
-        MailSender.api = apiGet;
-    }
-
-    public void setSubject(String subjectGet) {
-        MailSender.subject = subjectGet;
-    }
-
-    public void setFrom(String fromGet) {
-        MailSender.from = fromGet;
-    }
+    private String url;
+    private String api;
+    private String from;
+    private String subject;
 }
+
 
