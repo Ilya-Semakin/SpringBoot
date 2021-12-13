@@ -5,16 +5,15 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-@Component
-@ConfigurationProperties(prefix = "mailgun")
 @Getter
 @Setter
+@Component
+@ConfigurationProperties(prefix = "mailgun")
 public class Mailgun {
-
-    private String url;
-    private String api;
-    private String from;
-    private String subject;
+	private String url;
+	private String api;
+	private String from;
+	private String subject;
 }
 
 

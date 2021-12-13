@@ -10,21 +10,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MailSender {
-    @Autowired
-    private Mailgun mailgun;
 
-    public JsonNode sendSimpleMessage(String text,
-                                      String mail) throws UnirestException {
-        HttpResponse<JsonNode> request;
-        request = Unirest.post(mailgun.getUrl())
-                .basicAuth("api", mailgun.getApi())
-                .field("from", mailgun.getFrom())
-                .field("to", mail)
-                .field("subject", mailgun.getSubject())
-                .field("text", text)
-                .asJson();
-        return request.getBody();
-    }
+	@Autowired
+	private Mailgun parameter;
+
+	public JsonNode sendSimpleMessage(String text,
+									  String mail) throws UnirestException {
+		HttpResponse<JsonNode> request;
+		request = Unirest.post(parameter.getUrl())
+				.basicAuth("api", parameter.getApi())
+				.field("from", parameter.getFrom())
+				.field("to", mail)
+				.field("subject", parameter.getSubject())
+				.field("text", text)
+				.asJson();
+		return request.getBody();
+	}
 }
-
 
