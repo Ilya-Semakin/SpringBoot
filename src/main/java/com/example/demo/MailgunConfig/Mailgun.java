@@ -15,5 +15,3 @@ public class Mailgun {
 	private String from;
 	private String subject;
 }
-
-
