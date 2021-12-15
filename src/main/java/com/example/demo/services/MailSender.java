@@ -1,6 +1,8 @@
 package com.example.demo.services;
 
 import com.example.demo.MailgunConfig.Mailgun;
+import com.example.demo.MessageInfo.MessageRepository;
+import com.example.demo.MessageInfo.Message;
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
@@ -11,8 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailSender {
 
-	@Autowired
-	private Mailgun parameter;
+	private final Mailgun parameter;
+	private final MessageRepository messageRepository;
+
+	public MailSender(Mailgun parameter, MessageRepository messageRepository) {
+		this.parameter = parameter;
+		this.messageRepository = messageRepository;
+	}
 
 	public JsonNode sendSimpleMessage(String text,
 									  String mail) throws UnirestException {
@@ -24,6 +31,8 @@ public class MailSender {
 				.field("subject", parameter.getSubject())
 				.field("text", text)
 				.asJson();
+		messageRepository.save(new Message());
 		return request.getBody();
+
 	}
 }
