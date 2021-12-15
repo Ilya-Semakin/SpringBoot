@@ -8,9 +8,9 @@ mailgun:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/messageInform
+    url: jdbc:postgresql://localhost:5432/messageInformation
     username: message
-    password: 123
+    password: 1234
     initialization-mode: always
   jpa:
     database: postgresql
