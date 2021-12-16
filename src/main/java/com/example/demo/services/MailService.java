@@ -1,8 +1,8 @@
 package com.example.demo.services;
 
 import com.example.demo.configuration.MailConf;
-import com.example.demo.messageInfo.MailRepository;
-import com.example.demo.messageInfo.MailDB;
+import com.example.demo.repository.MailRepository;
+import com.example.demo.repository.MailDB;
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;

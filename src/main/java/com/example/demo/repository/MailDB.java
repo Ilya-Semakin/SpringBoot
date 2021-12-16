@@ -1,4 +1,4 @@
-package com.example.demo.messageInfo;
+package com.example.demo.repository;
 
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
