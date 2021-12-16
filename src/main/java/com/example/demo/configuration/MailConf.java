@@ -1,4 +1,4 @@
-package com.example.demo.mailgunConfig;
+package com.example.demo.configuration;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @ConfigurationProperties(prefix = "mailgun")
-public class MailgunConf {
+public class MailConf {
 	private String url;
 	private String api;
 	private String from;

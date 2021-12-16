@@ -1,8 +1,8 @@
 package com.example.demo.services;
 
-import com.example.demo.mailgunConfig.MailgunConf;
-import com.example.demo.messageInfo.MessageRepository;
-import com.example.demo.messageInfo.Message;
+import com.example.demo.configuration.MailConf;
+import com.example.demo.messageInfo.MailRepository;
+import com.example.demo.messageInfo.MailDB;
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
@@ -14,20 +14,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailService {
 
-	private final MailgunConf mailgunConf;
-	private final MessageRepository mailDB;
+	private final MailConf mailConf;
+	private final MailRepository mailRepository;
 
 	public JsonNode sendSimpleMessage(String text,
 									  String mail) throws UnirestException {
 		HttpResponse<JsonNode> request;
-		request = Unirest.post(mailgunConf.getUrl())
-				.basicAuth("api", mailgunConf.getApi())
-				.field("from", mailgunConf.getFrom())
+		request = Unirest.post(mailConf.getUrl())
+				.basicAuth("api", mailConf.getApi())
+				.field("from", mailConf.getFrom())
 				.field("to", mail)
-				.field("subject", mailgunConf.getSubject())
+				.field("subject", mailConf.getSubject())
 				.field("text", text)
 				.asJson();
-		mailDB.save(new Message(mail,text));
+		mailRepository.save(new MailDB(mail,text));
 		return request.getBody();
 	}
 }
