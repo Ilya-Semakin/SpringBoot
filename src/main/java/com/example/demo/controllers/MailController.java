@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.repository.AllowedMailRepository;
+import com.example.demo.repository.AllowedMailsRepository;
 import com.example.demo.repository.Mails;
 import com.example.demo.repository.MailsRepository;
 import com.example.demo.services.MailService;
@@ -15,12 +15,12 @@ import java.util.List;
 public class MailController {
 
 	private final MailService mailService;
-	private final AllowedMailRepository allowedMailRepository;
+	private final AllowedMailsRepository allowedMailsRepository;
 	private final MailsRepository mailsRepository;
 
 	@PostMapping("/send")
 	public void sendMessage(String text, String mail) {
-		if(allowedMailRepository.findByMail(mail).isEmpty() == false) {
+		if(allowedMailsRepository.findByMail(mail).isEmpty() == false) {
 			mailService.sendSimpleMessage(text, mail);
 		}
 	}
