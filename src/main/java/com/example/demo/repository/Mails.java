@@ -1,22 +1,18 @@
 package com.example.demo.repository;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@Getter
 @Table(name = "message")
 public class Mails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	@Override
-	public String toString() {
-		return " senderMail= '" + senderMail +
-				"', messageText= '" + messageText + "'\n" ;
-	}
 
 	@Column(name = "EMAIL")
 	private String senderMail;
