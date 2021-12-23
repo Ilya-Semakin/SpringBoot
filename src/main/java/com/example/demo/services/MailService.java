@@ -9,9 +9,12 @@ import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 
 @RequiredArgsConstructor
 @Service
@@ -36,9 +39,9 @@ public class MailService {
 		}
 		return request.getBody();
 	}
-
-	public List<Mails> getMails() {
-		List<Mails> mails = mailsRepository.findAll();
-		return mails;
+	public List<Mails> getMails(int pageNumber, int pageSize) {
+		Pageable paging = PageRequest.of(pageNumber, pageSize);
+		Page<Mails> pagedResult = mailsRepository.findAll(paging);
+		return pagedResult.toList();
 	}
 }
