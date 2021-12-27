@@ -36,6 +36,8 @@ dependencies {
     implementation 'com.konghq:unirest-java:3.11.09'
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.13'
     implementation 'org.postgresql:postgresql:42.2.10'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.2.2.RELEASE'
+
 }
 
 test {
